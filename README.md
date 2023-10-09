@@ -1,45 +1,32 @@
-# Flutter E-Commerce App Template
+## ADADIS - Shoes Store App
+## How to Use 
 
- If you want to learn how to build this ecommerce template on Flutter [watch the playlist on YouTube](https://youtube.com/playlist?list=PLxUBb2A_UUy8OlaNZpS2mfL8xpHcnd_Af), In the first video, we start by making a neat onboarding screen for our shopping app. This works on both Android and iOS because it's made with Flutter. In the next video, we tackle the 'Sign In' and 'Forgot Password' screens, adding some unique error messages. The third video covers the 'Sign Up' and OTP processes. The fourth one is fun – we create the main homepage. In the fifth, we dive into the product page, and in the sixth, we craft an order page with cool features like 'swipe to delete.' Finally, in the seventh video, we design the user profile page.
+**Step 1:**
 
- Download the Flutter ecommerce app template for Free.
+Download or clone this repo by using the link below:
 
+```
+https://github.com/zubairehman/flutter-boilerplate-project.git
+```
 
-### Video Preview of the Shop template
+**Step 2:**
 
-![Preview](/intro.gif)
+Go to project root and execute the following command in console to get the required dependencies: 
 
-## Screens it contains:
+```
+flutter pub get 
+```
 
-=> Onboarding
+**Step 3:**
 
-=> Login
+This project uses `inject` library that works with code generation, execute the following command to generate files:
 
-=> Forgot Password
+```
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
 
-=> Sign Up
+or watch command in order to keep the source code synced automatically:
 
-=> Complete Profile
-
-=> OTP Verification
-
-=> Home Page
-
-=> Product Details
-
-=> Order
-
-=> Profile (added)
-
-=> Bottom Navigation Bar (added)
-
-Now it contains all the screen, thanks for your love and support 🙏 
-
-## Photos
-![Preview](/1.png)
-![Preview](2.png)
-![Preview](3.png)
-![Preview](4.png)
-![Preview](5.png)
-![Preview](6.png)
-![Preview](7.png)
+```
+flutter packages pub run build_runner watch
+```
