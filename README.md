@@ -6,7 +6,7 @@
 Download or clone this repo by using the link below:
 
 ```
-https://github.com/zubairehman/flutter-boilerplate-project.git
+https://github.com/leducminh85/shoes_shop_app
 ```
 
 **Step 2:**
