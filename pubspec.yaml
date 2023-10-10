@@ -30,6 +30,7 @@ dependencies:
   # if you are using latest flutter please update your flutter_svg package to ^0.18.*
   flutter_svg: ^2.0.7 # help us to use SVG in our app
   provider: ^6.0.5 # for State management
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +56,20 @@ flutter:
         - asset: assets/fonts/muli/Muli-Bold.ttf
           weight: 700
         - asset: assets/fonts/muli/Muli-Light.ttf
+          weight: 300
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 300
+    - family: RobotoSlab
+      fonts:
+        - asset: assets/fonts/robotoslab/RobotoSlab-Medium.ttf
+        - asset: assets/fonts/robotoslab/RobotoSlab-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/robotoslab/RobotoSlab-Light.ttf
           weight: 300
   #   - family: Trajan Pro
   #     fonts:
