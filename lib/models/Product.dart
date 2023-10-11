@@ -28,6 +28,9 @@ List<Product> demoProducts = [
     id: 1,
     images: [
       "assets/images/product_image1.png",
+      "assets/images/product_image1_1.png",
+      "assets/images/product_image1_2.png",
+      "assets/images/product_image1_3.png",
     ],
     colors: [
       Color(0xFFF6625E),
