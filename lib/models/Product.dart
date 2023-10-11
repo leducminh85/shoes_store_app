@@ -27,10 +27,7 @@ List<Product> demoProducts = [
   Product(
     id: 1,
     images: [
-      "assets/images/ps4_console_white_1.png",
-      "assets/images/ps4_console_white_2.png",
-      "assets/images/ps4_console_white_3.png",
-      "assets/images/ps4_console_white_4.png",
+      "assets/images/product_image1.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -38,7 +35,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Wireless Controller for PS4™",
+    title: "Air Jordan 1 Mid-Paris White™",
     price: 64.99,
     description: description,
     rating: 4.8,
@@ -48,7 +45,7 @@ List<Product> demoProducts = [
   Product(
     id: 2,
     images: [
-      "assets/images/Image Popular Product 2.png",
+      "assets/images/product_image2.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -56,7 +53,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Nike Sport White - Man Pant",
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 50.5,
     description: description,
     rating: 4.1,
@@ -65,7 +62,7 @@ List<Product> demoProducts = [
   Product(
     id: 3,
     images: [
-      "assets/images/glap.png",
+      "assets/images/product_image3.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -73,7 +70,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Gloves XC Omega - Polygon",
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 36.55,
     description: description,
     rating: 4.1,
@@ -83,7 +80,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/wireless headset.png",
+      "assets/images/product_image4.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -91,11 +88,12 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Logitech Head",
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 20.20,
     description: description,
     rating: 4.1,
     isFavourite: true,
+    isPopular: true,
   ),
 ];
 
