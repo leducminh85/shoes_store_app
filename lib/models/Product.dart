@@ -5,6 +5,8 @@ class Product {
   final String title, description;
   final List<String> images;
   final List<Color> colors;
+  final List<int> sizes;
+
   final double rating, price;
   final bool isFavourite, isPopular;
 
@@ -12,6 +14,7 @@ class Product {
     required this.id,
     required this.images,
     required this.colors,
+    required this.sizes,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
@@ -38,6 +41,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
+    sizes: [35, 36, 37, 38],
     title: "Air Jordan 1 Mid-Paris White™",
     price: 64.99,
     description: description,
@@ -56,6 +60,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
+    sizes: [35, 36],
     title: "Air Jordan 1 Mid – Wolf Grey",
     price: 50.5,
     description: description,
@@ -73,6 +78,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
+    sizes: [38, 39, 40, 41],
     title: "Air Jordan 1 Mid – Wolf Grey",
     price: 36.55,
     description: description,
@@ -91,6 +97,7 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
+    sizes: [35, 36, 37, 38],
     title: "Air Jordan 1 Mid – Wolf Grey",
     price: 20.20,
     description: description,
@@ -101,4 +108,4 @@ List<Product> demoProducts = [
 ];
 
 const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+    "Giày AKKA ACTIVE B2221 là phiên bản ACTIVE tiếp theo được ra mắt của thương hiệu AKKA...";
