@@ -4,7 +4,6 @@ import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/screens/details/components/size_dots.dart';
 import 'package:shop_app/size_config.dart';
 
-import 'color_dots.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
