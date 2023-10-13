@@ -5,6 +5,8 @@ class Product {
   final String title, description;
   final List<String> images;
   final List<Color> colors;
+  final List<int> sizes;
+
   final double rating, price;
   final bool isFavourite, isPopular;
 
@@ -12,6 +14,7 @@ class Product {
     required this.id,
     required this.images,
     required this.colors,
+    required this.sizes,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
@@ -27,10 +30,10 @@ List<Product> demoProducts = [
   Product(
     id: 1,
     images: [
-      "assets/images/ps4_console_white_1.png",
-      "assets/images/ps4_console_white_2.png",
-      "assets/images/ps4_console_white_3.png",
-      "assets/images/ps4_console_white_4.png",
+      "assets/images/product_image1.png",
+      "assets/images/product_image1_1.png",
+      "assets/images/product_image1_2.png",
+      "assets/images/product_image1_3.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -38,7 +41,8 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Wireless Controller for PS4™",
+    sizes: [35, 36, 37, 38],
+    title: "Air Jordan 1 Mid-Paris White™",
     price: 64.99,
     description: description,
     rating: 4.8,
@@ -48,7 +52,7 @@ List<Product> demoProducts = [
   Product(
     id: 2,
     images: [
-      "assets/images/Image Popular Product 2.png",
+      "assets/images/product_image2.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -56,7 +60,8 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Nike Sport White - Man Pant",
+    sizes: [35, 36],
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 50.5,
     description: description,
     rating: 4.1,
@@ -65,7 +70,7 @@ List<Product> demoProducts = [
   Product(
     id: 3,
     images: [
-      "assets/images/glap.png",
+      "assets/images/product_image3.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -73,7 +78,8 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Gloves XC Omega - Polygon",
+    sizes: [38, 39, 40, 41],
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 36.55,
     description: description,
     rating: 4.1,
@@ -83,7 +89,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/wireless headset.png",
+      "assets/images/product_image4.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -91,13 +97,15 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Logitech Head",
+    sizes: [35, 36, 37, 38],
+    title: "Air Jordan 1 Mid – Wolf Grey",
     price: 20.20,
     description: description,
     rating: 4.1,
     isFavourite: true,
+    isPopular: true,
   ),
 ];
 
 const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+    "Giày AKKA ACTIVE B2221 là phiên bản ACTIVE tiếp theo được ra mắt của thương hiệu AKKA...";

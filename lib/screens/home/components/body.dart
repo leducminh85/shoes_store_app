@@ -5,6 +5,7 @@ import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
 import 'popular_product.dart';
+import 'newest_product.dart';
 import 'special_offers.dart';
 
 class Body extends StatelessWidget {
@@ -22,6 +23,8 @@ class Body extends StatelessWidget {
             SpecialOffers(),
             SizedBox(height: getProportionateScreenWidth(30)),
             PopularProducts(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            NewestProducts(),
             SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),
