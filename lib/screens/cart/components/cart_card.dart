@@ -3,15 +3,20 @@ import 'package:shop_app/models/Cart.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:shop_app/components/rounded_icon_btn.dart';
 
-class CartCard extends StatelessWidget {
+class CartCard extends StatefulWidget {
   const CartCard({
     Key? key,
     required this.cart,
   }) : super(key: key);
 
   final Cart cart;
+  @override
+  _CartCardState createState() => _CartCardState();
+}
 
+class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +35,7 @@ class CartCard extends StatelessWidget {
                           color: Color(0xFFF5F6F9),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Image.asset(cart.product.images[0]),
+                        child: Image.asset(widget.cart.product.images[0]),
                       ),
                     ))),
             SizedBox(width: 20),
@@ -38,23 +43,60 @@ class CartCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cart.product.title,
+                  widget.cart.product.title,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                   maxLines: 2,
                 ),
                 SizedBox(height: 10),
-                Text.rich(
-                  TextSpan(
-                    text: "\$${cart.product.price}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, color: kPrimaryColor),
-                    children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text.rich(
                       TextSpan(
-                          text: " x${cart.numOfItem}",
-                          style: Theme.of(context).textTheme.bodyText1),
-                    ],
-                  ),
-                )
+                        text: "\$${widget.cart.product.price}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, color: kPrimaryColor),
+                      ),
+                    ),
+                    SizedBox(width: 40),
+                    Text(
+                      "Size: ${widget.cart.size}",
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    RoundedIconBtn(
+                      size: 30,
+                      icon: Icons.remove,
+                      showShadow: true,
+                      press: () {
+                        setState(() {
+                          if (widget.cart.numOfItem > 1) {
+                            widget.cart.numOfItem -= 1;
+                          }
+                          ;
+                        });
+                      },
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(10)),
+                    Text(
+                      widget.cart.numOfItem.toString(),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(10)),
+                    RoundedIconBtn(
+                      size: 30,
+                      icon: Icons.add,
+                      showShadow: true,
+                      press: () {
+                        setState(() {
+                          widget.cart.numOfItem += 1;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ],
             )
           ],
@@ -62,10 +104,10 @@ class CartCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
+              topLeft: Radius.circular(17),
+              topRight: Radius.circular(17),
+              bottomLeft: Radius.circular(17),
+              bottomRight: Radius.circular(17)),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),

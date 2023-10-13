@@ -8,20 +8,22 @@ class Cart {
   final Product product;
   final int size;
 
-  final int numOfItem;
+  int numOfItem;
 
   Cart({required this.product, required this.numOfItem, required this.size});
 }
 
 // Demo data for our cart
 
-List<Cart> demoCarts = [
-  Cart(product: demoProducts[0], numOfItem: 2, size: 30),
-  Cart(product: demoProducts[1], numOfItem: 2, size: 30),
-  Cart(product: demoProducts[3], numOfItem: 2, size: 30),
-];
+List<Cart> demoCarts = [];
 
 Function? addToCart(Cart cart) {
-  demoCarts.add(cart);
+  final index = demoCarts.indexWhere(
+      (item) => item.product == cart.product && item.size == cart.size);
+  if (index == -1)
+    demoCarts.add(cart);
+  else {
+    demoCarts[index].numOfItem += cart.numOfItem;
+  }
   return null;
 }

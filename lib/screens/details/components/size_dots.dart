@@ -40,7 +40,7 @@ class _SizeDotsState extends State<SizeDots> {
                   size: widget.product.sizes[index],
                   isSelected: index == selectedSize,
                   press: () {
-                    widget.selectSize(index);
+                    widget.selectSize(widget.product.sizes[index]);
                     setState(() {
                       selectedSize = index;
                     });

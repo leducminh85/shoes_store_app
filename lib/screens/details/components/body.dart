@@ -18,13 +18,12 @@ class Body extends StatefulWidget {
   }) : super(key: key);
 
   final Product product;
-
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  int selectedSize = 0;
+  int selectedSize = -1;
   int amount = 1;
   @override
   Widget build(BuildContext context) {
@@ -71,7 +70,9 @@ class _BodyState extends State<Body> {
                             Cart currentCart = new Cart(
                                 product: widget.product,
                                 numOfItem: amount,
-                                size: selectedSize);
+                                size: selectedSize == -1
+                                    ? widget.product.sizes[0]
+                                    : selectedSize); // Check size 0
                             addToCart(currentCart);
                             Fluttertoast.showToast(
                                 msg: "Added to cart",
