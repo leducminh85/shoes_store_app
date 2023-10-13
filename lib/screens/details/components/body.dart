@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/screens/details/components/size_dots.dart';
 import 'package:shop_app/size_config.dart';
+import 'package:shop_app/models/Cart.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'product_description.dart';
 import 'top_rounded_container.dart';
@@ -64,7 +67,21 @@ class _BodyState extends State<Body> {
                         ),
                         child: DefaultButton(
                           text: "Add To Cart",
-                          press: () {},
+                          press: () {
+                            Cart currentCart = new Cart(
+                                product: widget.product,
+                                numOfItem: amount,
+                                size: selectedSize);
+                            addToCart(currentCart);
+                            Fluttertoast.showToast(
+                                msg: "Added to cart",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: kPrimaryColor,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          },
                         ),
                       ),
                     ),
