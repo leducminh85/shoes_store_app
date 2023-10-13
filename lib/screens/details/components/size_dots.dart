@@ -9,9 +9,13 @@ class SizeDots extends StatefulWidget {
   const SizeDots({
     Key? key,
     required this.product,
+    required this.selectAmount,
+    required this.selectSize,
   }) : super(key: key);
 
   final Product product;
+  final Function selectAmount;
+  final Function selectSize;
 
   @override
   _SizeDotsState createState() => _SizeDotsState();
@@ -19,7 +23,7 @@ class SizeDots extends StatefulWidget {
 
 class _SizeDotsState extends State<SizeDots> {
   int selectedSize = 0;
-  int amount = 0;
+  int amount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +37,14 @@ class _SizeDotsState extends State<SizeDots> {
             ...List.generate(
               widget.product.sizes.length,
               (index) => SizeDot(
-                size: widget.product.sizes[index],
-                isSelected: index == selectedSize,
-                press: () {
-                  setState(() {
-                    selectedSize = index;
-                  });
-                },
-              ),
+                  size: widget.product.sizes[index],
+                  isSelected: index == selectedSize,
+                  press: () {
+                    widget.selectSize(index);
+                    setState(() {
+                      selectedSize = index;
+                    });
+                  }),
             ),
           ]),
           Spacer(),
@@ -50,7 +54,11 @@ class _SizeDotsState extends State<SizeDots> {
                 icon: Icons.remove,
                 press: () {
                   setState(() {
-                    if (amount > 1) amount -= 1;
+                    if (amount > 1) {
+                      amount -= 1;
+                      widget.selectSize(amount);
+                    }
+                    ;
                   });
                 },
               ),
@@ -66,6 +74,7 @@ class _SizeDotsState extends State<SizeDots> {
                 press: () {
                   setState(() {
                     amount += 1;
+                    widget.selectSize(amount);
                   });
                 },
               ),
