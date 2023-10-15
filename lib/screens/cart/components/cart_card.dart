@@ -4,6 +4,7 @@ import 'package:shop_app/models/Cart.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'package:shop_app/components/rounded_icon_btn.dart';
+import 'package:provider/provider.dart';
 
 class CartCard extends StatefulWidget {
   const CartCard({

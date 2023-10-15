@@ -3,6 +3,8 @@ import 'package:shop_app/models/Cart.dart';
 
 import 'components/body.dart';
 import 'components/check_out_card.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/models/Cart.dart';
 
 class CartScreen extends StatefulWidget {
   static String routeName = "/cart";
@@ -30,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
             style: TextStyle(color: Colors.black),
           ),
           Text(
-            "${demoCarts.length} items",
+            "${Provider.of<CartModel>(context, listen: false).demoCarts.length} items",
             style: Theme.of(context).textTheme.caption,
           ),
         ],

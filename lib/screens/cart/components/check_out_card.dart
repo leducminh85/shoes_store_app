@@ -4,6 +4,8 @@ import 'package:shop_app/components/default_button.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/models/Cart.dart';
 
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
@@ -68,7 +70,8 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text:
+                            "\$${Provider.of<CartModel>(context, listen: false).totalValue}",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

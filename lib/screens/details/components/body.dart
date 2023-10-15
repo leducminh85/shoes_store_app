@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -73,7 +74,8 @@ class _BodyState extends State<Body> {
                                 size: selectedSize == -1
                                     ? widget.product.sizes[0]
                                     : selectedSize); // Check size 0
-                            addToCart(currentCart);
+                            Provider.of<CartModel>(context, listen: false)
+                                .addToCart(currentCart);
                             Fluttertoast.showToast(
                                 msg: "Added to cart",
                                 toastLength: Toast.LENGTH_SHORT,
