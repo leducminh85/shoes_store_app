@@ -59,7 +59,8 @@ class _CartCardState extends State<CartCard> {
                       TextSpan(
                         text: "\$${widget.cartItem.product.price}",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, color: kPrimaryColor),
+                            fontWeight: FontWeight.w600,
+                            color: kPrimaryMediumColor),
                       ),
                     ),
                     SizedBox(width: 40),
@@ -113,9 +114,9 @@ class _CartCardState extends State<CartCard> {
               bottomRight: Radius.circular(17)),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withOpacity(0.2),
               spreadRadius: 1,
-              blurRadius: 5,
+              blurRadius: 10,
               offset: Offset(0, 3), // changes position of shadow
             ),
           ],
