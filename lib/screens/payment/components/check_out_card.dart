@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/default_button.dart';
-import 'package:shop_app/screens/payment/payment_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -9,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/Cart.dart';
 
 class CheckoutCard extends StatefulWidget {
-  static String routeName = "/cart";
+  static String routeName = "/payment";
 
   @override
   _CheckoutCardState createState() => _CheckoutCardState();
@@ -44,38 +43,16 @@ class _CheckoutCardState extends State<CheckoutCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  height: getProportionateScreenWidth(40),
-                  width: getProportionateScreenWidth(40),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFF5F6F9),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: SvgPicture.asset("assets/icons/receipt.svg"),
-                ),
-                Spacer(),
-                Text("Add voucher code"),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kTextColor,
-                )
-              ],
-            ),
-            SizedBox(height: getProportionateScreenHeight(20)),
-            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "Total:\n",
+                    text: "\$${cart.totalValue.abs().toStringAsFixed(3)}\n",
+                    style: TextStyle(fontSize: 16, color: kPrimaryMediumColor),
                     children: [
                       TextSpan(
-                        text: "\$${cart.totalValue.abs().toStringAsFixed(3)}",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        text: "View detailed bill",
+                        style: TextStyle(fontSize: 10, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -83,10 +60,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Check Out",
-                    press: () {
-                      Navigator.pushNamed(context, PaymentScreen.routeName);
-                    },
+                    text: "Proceed to pay",
+                    press: () {},
                   ),
                 ),
               ],
