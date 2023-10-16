@@ -63,7 +63,6 @@ class _ShippingCardState extends State<ShippingCard> {
                   ),
                 ],
               ),
-              SizedBox(width: 20),
             ],
           ),
         ),
