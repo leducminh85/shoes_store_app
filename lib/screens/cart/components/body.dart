@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Cart.dart';
 
 import '../../../size_config.dart';
 import 'cart_card.dart';
 
 class Body extends StatefulWidget {
+  Body();
   @override
   _BodyState createState() => _BodyState();
 }
@@ -15,23 +17,21 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
       child: ListView.builder(
-        itemCount: demoCarts.length,
+        itemCount: cart.demoCarts.length,
         itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           child: Dismissible(
-            key: Key(demoCarts[index].product.id.toString()),
+            key: UniqueKey(),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
-              setState(() {
-                demoCarts.removeAt(index);
-              });
+              cart.removeFromCart(index);
             },
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Color(0xFFFFE6E6),
+                color: kPrimaryLightColor,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Row(
@@ -41,7 +41,7 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            child: CartCard(cart: demoCarts[index]),
+            child: CartCard(cartItem: cart.demoCarts[index], index: index),
           ),
         ),
       ),

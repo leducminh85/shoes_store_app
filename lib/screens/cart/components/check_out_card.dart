@@ -4,12 +4,17 @@ import 'package:shop_app/components/default_button.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/models/Cart.dart';
 
-class CheckoutCard extends StatelessWidget {
-  const CheckoutCard({
-    Key? key,
-  }) : super(key: key);
+class CheckoutCard extends StatefulWidget {
+  static String routeName = "/cart";
 
+  @override
+  _CheckoutCardState createState() => _CheckoutCardState();
+}
+
+class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -68,7 +73,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "\$${cart.totalValue.abs().toStringAsFixed(3)}",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

@@ -5,43 +5,80 @@ import 'package:shop_app/models/Product.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class SizeDots extends StatelessWidget {
+class SizeDots extends StatefulWidget {
   const SizeDots({
     Key? key,
     required this.product,
+    required this.selectAmount,
+    required this.selectSize,
   }) : super(key: key);
 
   final Product product;
+  final Function selectAmount;
+  final Function selectSize;
+
+  @override
+  _SizeDotsState createState() => _SizeDotsState();
+}
+
+class _SizeDotsState extends State<SizeDots> {
+  int selectedSize = 0;
+  int amount = 1;
 
   @override
   Widget build(BuildContext context) {
     // Now this is fixed and only for demo
-    int selectedSize = 3;
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
-          ...List.generate(
-            product.sizes.length,
-            (index) => SizeDot(
-              size: product.sizes[index],
-              isSelected: index == selectedSize,
-              press: () {
-                selectedSize = index;
-              },
+          Row(children: [
+            ...List.generate(
+              widget.product.sizes.length,
+              (index) => SizeDot(
+                  size: widget.product.sizes[index],
+                  isSelected: index == selectedSize,
+                  press: () {
+                    widget.selectSize(widget.product.sizes[index]);
+                    setState(() {
+                      selectedSize = index;
+                    });
+                  }),
             ),
-          ),
+          ]),
           Spacer(),
-          RoundedIconBtn(
-            icon: Icons.remove,
-            press: () {},
-          ),
-          SizedBox(width: getProportionateScreenWidth(20)),
-          RoundedIconBtn(
-            icon: Icons.add,
-            showShadow: true,
-            press: () {},
+          Row(
+            children: [
+              RoundedIconBtn(
+                icon: Icons.remove,
+                press: () {
+                  setState(() {
+                    if (amount > 1) {
+                      amount -= 1;
+                      widget.selectSize(amount);
+                    }
+                    ;
+                  });
+                },
+              ),
+              SizedBox(width: getProportionateScreenWidth(10)),
+              Text(
+                amount.toString(),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(width: getProportionateScreenWidth(10)),
+              RoundedIconBtn(
+                icon: Icons.add,
+                showShadow: true,
+                press: () {
+                  setState(() {
+                    amount += 1;
+                    widget.selectSize(amount);
+                  });
+                },
+              ),
+            ],
           ),
         ],
       ),
