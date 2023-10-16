@@ -3,8 +3,6 @@ import 'package:shop_app/models/Cart.dart';
 
 import 'components/body.dart';
 import 'components/check_out_card.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app/models/Cart.dart';
 
 class CartScreen extends StatefulWidget {
   static String routeName = "/cart";
@@ -14,6 +12,20 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // 2
+    cart.addListener(() => mounted ? setState(() {}) : null);
+  }
+
+  @override
+  void dispose() {
+    // 3
+    cart.removeListener(() {});
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +44,7 @@ class _CartScreenState extends State<CartScreen> {
             style: TextStyle(color: Colors.black),
           ),
           Text(
-            "${Provider.of<CartModel>(context, listen: false).demoCarts.length} items",
+            "${cart.demoCarts.length} items",
             style: Theme.of(context).textTheme.caption,
           ),
         ],

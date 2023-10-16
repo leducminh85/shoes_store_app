@@ -9,10 +9,13 @@ import 'package:provider/provider.dart';
 class CartCard extends StatefulWidget {
   const CartCard({
     Key? key,
-    required this.cart,
+    required this.cartItem,
+    required this.index,
   }) : super(key: key);
 
-  final Cart cart;
+  final CartItem cartItem;
+  final int index;
+
   @override
   _CartCardState createState() => _CartCardState();
 }
@@ -36,7 +39,7 @@ class _CartCardState extends State<CartCard> {
                           color: Color(0xFFF5F6F9),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Image.asset(widget.cart.product.images[0]),
+                        child: Image.asset(widget.cartItem.product.images[0]),
                       ),
                     ))),
             SizedBox(width: 20),
@@ -44,7 +47,7 @@ class _CartCardState extends State<CartCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.cart.product.title,
+                  widget.cartItem.product.title,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                   maxLines: 2,
                 ),
@@ -54,14 +57,14 @@ class _CartCardState extends State<CartCard> {
                   children: [
                     Text.rich(
                       TextSpan(
-                        text: "\$${widget.cart.product.price}",
+                        text: "\$${widget.cartItem.product.price}",
                         style: TextStyle(
                             fontWeight: FontWeight.w600, color: kPrimaryColor),
                       ),
                     ),
                     SizedBox(width: 40),
                     Text(
-                      "Size: ${widget.cart.size}",
+                      "Size: ${widget.cartItem.size}",
                     )
                   ],
                 ),
@@ -73,16 +76,15 @@ class _CartCardState extends State<CartCard> {
                       showShadow: true,
                       press: () {
                         setState(() {
-                          if (widget.cart.numOfItem > 1) {
-                            widget.cart.numOfItem -= 1;
+                          if (widget.cartItem.numOfItem > 1) {
+                            cart.updateAmountOfProduct(widget.index, -1);
                           }
-                          ;
                         });
                       },
                     ),
                     SizedBox(width: getProportionateScreenWidth(10)),
                     Text(
-                      widget.cart.numOfItem.toString(),
+                      widget.cartItem.numOfItem.toString(),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(width: getProportionateScreenWidth(10)),
@@ -92,7 +94,7 @@ class _CartCardState extends State<CartCard> {
                       showShadow: true,
                       press: () {
                         setState(() {
-                          widget.cart.numOfItem += 1;
+                          cart.updateAmountOfProduct(widget.index, 1);
                         });
                       },
                     ),

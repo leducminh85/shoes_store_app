@@ -68,14 +68,13 @@ class _BodyState extends State<Body> {
                         child: DefaultButton(
                           text: "Add To Cart",
                           press: () {
-                            Cart currentCart = new Cart(
+                            CartItem currentCart = new CartItem(
                                 product: widget.product,
                                 numOfItem: amount,
                                 size: selectedSize == -1
                                     ? widget.product.sizes[0]
                                     : selectedSize); // Check size 0
-                            Provider.of<CartModel>(context, listen: false)
-                                .addToCart(currentCart);
+                            cart.addToCart(currentCart);
                             Fluttertoast.showToast(
                                 msg: "Added to cart",
                                 toastLength: Toast.LENGTH_SHORT,

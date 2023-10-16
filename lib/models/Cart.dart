@@ -4,24 +4,25 @@ import 'package:flutter/material.dart';
 
 import 'Product.dart';
 
-class Cart {
+class CartItem {
   final Product product;
   final int size;
 
   int numOfItem;
 
-  Cart({required this.product, required this.numOfItem, required this.size});
+  CartItem(
+      {required this.product, required this.numOfItem, required this.size});
 }
 
 // Demo data for our cart
 
-List<Cart> demoCarts = [
-  Cart(product: demoProducts[0], numOfItem: 2, size: 30),
-  Cart(product: demoProducts[1], numOfItem: 2, size: 30),
-  Cart(product: demoProducts[3], numOfItem: 2, size: 30),
+List<CartItem> demoCarts = [
+  CartItem(product: demoProducts[0], numOfItem: 2, size: 30),
+  CartItem(product: demoProducts[1], numOfItem: 2, size: 30),
+  CartItem(product: demoProducts[3], numOfItem: 2, size: 30),
 ];
 
-Function? addToCart(Cart cart) {
+Function? addToCart(CartItem cart) {
   final index = demoCarts.indexWhere(
       (item) => item.product == cart.product && item.size == cart.size);
   if (index == -1)
@@ -33,23 +34,36 @@ Function? addToCart(Cart cart) {
 }
 
 class CartModel extends ChangeNotifier {
-  List<Cart> demoCarts = [];
-  double totalValue = 0;
-  final int unitPrice = 50;
+  List<CartItem> _demoCarts = [];
+  double _totalValue = 0;
 
-  void addToCart(Cart cart) {
-    final index = demoCarts.indexWhere(
+  double get totalValue => _totalValue;
+  List<CartItem> get demoCarts => _demoCarts;
+
+  void addToCart(CartItem cart) {
+    final index = _demoCarts.indexWhere(
         (item) => item.product == cart.product && item.size == cart.size);
     if (index == -1) {
-      demoCarts.add(cart);
+      _demoCarts.add(cart);
     } else {
-      demoCarts[index].numOfItem += cart.numOfItem;
+      _demoCarts[index].numOfItem += cart.numOfItem;
     }
-    totalValue += cart.numOfItem * cart.product.price;
+    _totalValue += cart.numOfItem * cart.product.price;
+    notifyListeners();
   }
 
   void removeFromCart(int index) {
-    totalValue -= demoCarts[index].numOfItem * demoCarts[index].product.price;
-    demoCarts.removeAt(index);
+    _totalValue -=
+        _demoCarts[index].numOfItem * _demoCarts[index].product.price;
+    _demoCarts.removeAt(index);
+    notifyListeners();
+  }
+
+  void updateAmountOfProduct(int index, int change) {
+    _demoCarts[index].numOfItem += change;
+    _totalValue += change * _demoCarts[index].product.price;
+    notifyListeners();
   }
 }
+
+CartModel cart = CartModel();
