@@ -13,6 +13,9 @@ class ProductListing extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    final Order newOrder = arguments['order'];
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -24,13 +27,13 @@ class ProductListing extends StatelessWidget {
           ),
           SizedBox(height: getProportionateScreenWidth(20)),
           ...List.generate(
-            currentOrder.order.cart!.demoCarts.length,
+            newOrder.cart!.demoCarts.length,
             (index) {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: ProductCard(
                   index: index,
-                  cartItem: currentOrder.order.cart!.demoCarts[index],
+                  cartItem: newOrder.cart!.demoCarts[index],
                 ),
               );
             },

@@ -73,6 +73,12 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           address: shippingAddress,
                           trackingNumber: generateRandomNumberString(10),
                           selectedPayment: currentPayment));
+                      orders.addToOrders(currentOrder.order);
+
+                      // cart.resetCart();
+                      // currentOrder.resetOrder();
+                      // resetPayment();
+
                       Fluttertoast.showToast(
                           msg: "Payment successful!",
                           toastLength: Toast.LENGTH_SHORT,
@@ -83,7 +89,11 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           fontSize: 16.0);
                       Navigator.pop(context);
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, OrderDetailScreen.routeName);
+                      Navigator.pushNamed(
+                        context,
+                        OrderDetailScreen.routeName,
+                        arguments: {'order': currentOrder.order},
+                      );
                     },
                   ),
                 ),

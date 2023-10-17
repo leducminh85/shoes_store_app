@@ -47,6 +47,18 @@ class OrderModel extends ChangeNotifier {
     );
     notifyListeners();
   }
+
+  void resetOrder() {
+    updateOrder(Order(
+        id: '',
+        trackingNumber: '',
+        address: '',
+        createdDay: DateTime.now(),
+        cart: cart,
+        selectedPayment: currentPayment,
+        status: 'Confirmed'));
+    notifyListeners();
+  }
 }
 
 OrderModel currentOrder = OrderModel();

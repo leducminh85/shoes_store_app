@@ -12,6 +12,9 @@ class PaymentOption extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    final Order newOrder = arguments['order'];
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -34,13 +37,13 @@ class PaymentOption extends StatelessWidget {
                           padding:
                               EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                           child: SvgPicture.asset(
-                            '${currentOrder.order.selectedPayment?.icon}',
+                            '${newOrder.selectedPayment?.icon}',
                             height: getProportionateScreenWidth(20),
                           ),
                         )),
                     Flexible(
                       child: Text(
-                        '${currentOrder.order.selectedPayment?.bankName}',
+                        '${newOrder.selectedPayment?.bankName}',
                         style: TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ),
@@ -50,7 +53,7 @@ class PaymentOption extends StatelessWidget {
                     Flexible(
                       child: Text(
                         hideAccountNumber(
-                          '${currentOrder.order.selectedPayment?.accountNumber}',
+                          '${newOrder.selectedPayment?.accountNumber}',
                         ),
                         style: TextStyle(color: Colors.grey, fontSize: 12),
                         overflow: TextOverflow.ellipsis,

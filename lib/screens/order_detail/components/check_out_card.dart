@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/models/Order.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app/models/Cart.dart';
 
 class CheckoutCard extends StatefulWidget {
   @override
@@ -15,6 +13,9 @@ class CheckoutCard extends StatefulWidget {
 class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    final Order newOrder = arguments['order'];
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: getProportionateScreenWidth(15),
@@ -45,7 +46,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "\$${cart.totalValue.abs().toStringAsFixed(3)}\n",
+                    text:
+                        '\$${newOrder.cart!.totalValue.abs().toStringAsFixed(3)}\n', //"\$${cart.totalValue.abs().toStringAsFixed(3)}\n",
                     style: TextStyle(fontSize: 16, color: kPrimaryMediumColor),
                     children: [
                       TextSpan(

@@ -11,6 +11,9 @@ class ShippingInfo extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    final Order newOrder = arguments['order'];
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -23,8 +26,7 @@ class ShippingInfo extends StatelessWidget {
                 title: "Order No.${currentOrder.order.id}",
                 press: () {},
               ),
-              Text(
-                  "${DateFormat('dd-MMM-yyyy').format(currentOrder.order.createdDay!)}")
+              Text("${DateFormat('dd-MMM-yyyy').format(newOrder.createdDay!)}")
             ],
           ),
           SizedBox(
@@ -33,9 +35,9 @@ class ShippingInfo extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Tracking Number ${currentOrder.order.trackingNumber}"),
+              Text("Tracking Number ${newOrder.trackingNumber}"),
               Text(
-                "${currentOrder.order.status}",
+                "${newOrder.status}",
                 style: TextStyle(color: Colors.green),
               )
             ],
@@ -73,7 +75,7 @@ class ShippingInfo extends StatelessWidget {
                             )),
                         Flexible(
                           child: Text(
-                            '${currentOrder.order.address}',
+                            '${newOrder.address}',
                             style: TextStyle(color: Colors.grey, fontSize: 12),
                           ),
                         ),
