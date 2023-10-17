@@ -23,7 +23,7 @@ class ShippingInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SectionTitle(
-                title: "Order No.${currentOrder.order.id}",
+                title: "Order No.${newOrder.id}",
                 press: () {},
               ),
               Text("${DateFormat('dd-MMM-yyyy').format(newOrder.createdDay!)}")
@@ -35,7 +35,7 @@ class ShippingInfo extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Tracking Number ${newOrder.trackingNumber}"),
+              Text("Tracking Number VN${newOrder.trackingNumber}"),
               Text(
                 "${newOrder.status}",
                 style: TextStyle(color: Colors.green),

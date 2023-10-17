@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/order/order_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 
 import 'profile_menu.dart';
@@ -21,7 +22,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "My Orders",
             icon: "assets/icons/Orders.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, OrdersScreen.routeName);
+            },
           ),
           ProfileMenu(
             text: "Password",
