@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/screens/payment/components/payment_option_card.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/models/Order.dart';
+import 'package:shop_app/models/PaymentOption.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -20,7 +22,60 @@ class PaymentOption extends StatelessWidget {
             press: () {},
           ),
           SizedBox(height: getProportionateScreenWidth(20)),
-          PaymentOptionCard()
+          Container(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                        width: 50,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                          child: SvgPicture.asset(
+                            '${currentOrder.order.selectedPayment?.icon}',
+                            height: getProportionateScreenWidth(20),
+                          ),
+                        )),
+                    Flexible(
+                      child: Text(
+                        '${currentOrder.order.selectedPayment?.bankName}',
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Flexible(
+                      child: Text(
+                        hideAccountNumber(
+                          '${currentOrder.order.selectedPayment?.accountNumber}',
+                        ),
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(17),
+                    topRight: Radius.circular(17),
+                    bottomLeft: Radius.circular(17),
+                    bottomRight: Radius.circular(17)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              )),
         ],
       ),
     );
