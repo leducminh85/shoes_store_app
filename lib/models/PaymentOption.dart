@@ -23,6 +23,8 @@ List<PaymentOption> demoPayment = [
       accountNumber: '4055 3265 5666 6246'),
 ];
 
+PaymentOption currentPayment = demoPayment[0];
+
 String hideAccountNumber(String text) {
   return "*** **** ${text.substring(text.length - 4)}";
 }

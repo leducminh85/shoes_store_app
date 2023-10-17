@@ -22,7 +22,6 @@ class _PaymentOptionCardState extends State<PaymentOptionCard> {
   void setSelectedRadio(int val) {
     setState(() {
       selectedOption = val;
-      currentPayment = demoPayment[val];
     });
   }
 

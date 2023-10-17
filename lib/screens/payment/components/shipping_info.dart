@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/screens/payment/components/shipping_card.dart';
 
 import '../../../size_config.dart';
@@ -17,11 +19,30 @@ class ShippingInfo extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Column(
         children: [
-          SectionTitle(
-            title: "Shipping address",
-            press: () {},
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SectionTitle(
+                title: "Order No1250",
+                press: () {},
+              ),
+              Text(
+                  "${DateFormat('dd-MMM-yyyy').format(currentOrder.order.createdDay!)}")
+            ],
           ),
-          SizedBox(height: getProportionateScreenWidth(20)),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Tracking Number ${currentOrder.order.trackingNumber}"),
+              Text("${currentOrder.order.status}")
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
           ShippingCard(shippingAddress: shippingAddress)
         ],
       ),

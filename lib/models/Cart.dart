@@ -14,22 +14,22 @@ class CartItem {
 
 // Demo data for our cart
 
-List<CartItem> demoCarts = [
-  CartItem(product: demoProducts[0], numOfItem: 2, size: 30),
-  CartItem(product: demoProducts[1], numOfItem: 2, size: 30),
-  CartItem(product: demoProducts[3], numOfItem: 2, size: 30),
-];
+// List<CartItem> demoCarts = [
+//   CartItem(product: demoProducts[0], numOfItem: 2, size: 30),
+//   CartItem(product: demoProducts[1], numOfItem: 2, size: 30),
+//   CartItem(product: demoProducts[3], numOfItem: 2, size: 30),
+// ];
 
-Function? addToCart(CartItem cart) {
-  final index = demoCarts.indexWhere(
-      (item) => item.product == cart.product && item.size == cart.size);
-  if (index == -1)
-    demoCarts.add(cart);
-  else {
-    demoCarts[index].numOfItem += cart.numOfItem;
-  }
-  return null;
-}
+// Function? addToCart(CartItem cart) {
+//   final index = demoCarts.indexWhere(
+//       (item) => item.product == cart.product && item.size == cart.size);
+//   if (index == -1)
+//     demoCarts.add(cart);
+//   else {
+//     demoCarts[index].numOfItem += cart.numOfItem;
+//   }
+//   return null;
+// }
 
 class CartModel extends ChangeNotifier {
   List<CartItem> _demoCarts = [];

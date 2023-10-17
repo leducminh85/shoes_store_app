@@ -5,6 +5,8 @@ import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/screens/forgot_password/forgot_password_screen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/login_success/login_success_screen.dart';
+import 'package:shop_app/screens/order/order_screen.dart';
+import 'package:shop_app/screens/order_detail/order_detail_screen.dart';
 import 'package:shop_app/screens/otp/otp_screen.dart';
 import 'package:shop_app/screens/payment/payment_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
@@ -28,4 +30,6 @@ final Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   PaymentScreen.routeName: (context) => PaymentScreen(),
+  OrderDetailScreen.routeName: (context) => OrderDetailScreen(),
+  OrdersScreen.routeName: (context) => OrdersScreen(),
 };
