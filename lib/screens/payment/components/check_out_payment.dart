@@ -4,6 +4,7 @@ import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/models/PaymentOption.dart';
 import 'package:shop_app/screens/order_detail/order_detail_screen.dart';
+import 'package:shop_app/utils/create_id.dart';
 // import 'package:intl/intl';
 
 import '../../../constants.dart';
@@ -67,8 +68,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     text: "Proceed to pay",
                     press: () {
                       currentOrder.updateOrder(Order(
-                          createdDay: DateTime.now(),
                           address: shippingAddress,
+                          trackingNumber: generateRandomNumberString(10),
                           selectedPayment: currentPayment));
                       Navigator.pushNamed(context, OrderDetailScreen.routeName);
                     },

@@ -3,7 +3,7 @@ import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/PaymentOption.dart';
 
 class Order {
-  final int? id;
+  final String? id;
   final String? trackingNumber;
   final String? address;
 
@@ -25,7 +25,7 @@ class Order {
 
 class OrderModel extends ChangeNotifier {
   Order _order = Order(
-      id: 0,
+      id: '',
       trackingNumber: '',
       address: '',
       createdDay: DateTime.now(),

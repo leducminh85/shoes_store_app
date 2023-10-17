@@ -56,7 +56,7 @@ class _SizeDotsState extends State<SizeDots> {
                   setState(() {
                     if (amount > 1) {
                       amount -= 1;
-                      widget.selectSize(amount);
+                      widget.selectAmount(amount);
                     }
                     ;
                   });
@@ -74,7 +74,7 @@ class _SizeDotsState extends State<SizeDots> {
                 press: () {
                   setState(() {
                     amount += 1;
-                    widget.selectSize(amount);
+                    widget.selectAmount(amount);
                   });
                 },
               ),

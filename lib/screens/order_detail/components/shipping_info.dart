@@ -20,7 +20,7 @@ class ShippingInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SectionTitle(
-                title: "Order No1250",
+                title: "Order No.${currentOrder.order.id}",
                 press: () {},
               ),
               Text(
@@ -34,7 +34,10 @@ class ShippingInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Tracking Number ${currentOrder.order.trackingNumber}"),
-              Text("${currentOrder.order.status}")
+              Text(
+                "${currentOrder.order.status}",
+                style: TextStyle(color: Colors.green),
+              )
             ],
           ),
           SizedBox(
