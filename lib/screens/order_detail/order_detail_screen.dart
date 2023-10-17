@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/screens/order_detail/components/check_out_card.dart';
 
 import 'components/body.dart';
-import 'components/check_out_payment.dart';
 
-class PaymentScreen extends StatefulWidget {
-  static String routeName = "/payment";
+class OrderDetailScreen extends StatefulWidget {
+  static String routeName = "/order-detail";
 
   @override
-  _PaymentScreenState createState() => _PaymentScreenState();
+  _OrderDetailScreenState createState() => _OrderDetailScreenState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // 2
-    cart.addListener(() => mounted ? setState(() {}) : null);
-  }
-
-  @override
-  void dispose() {
-    // 3
-    cart.removeListener(() {});
-    super.dispose();
-  }
-
+class _OrderDetailScreenState extends State<OrderDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +26,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       title: Column(
         children: [
           Text(
-            "Payment Option",
+            "Order Detail",
             style: TextStyle(color: Colors.black),
           ),
         ],

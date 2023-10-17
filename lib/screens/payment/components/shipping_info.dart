@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/screens/payment/components/shipping_card.dart';
 
 import '../../../size_config.dart';
@@ -10,8 +11,6 @@ class ShippingInfo extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    String shippingAddress = ' ';
-
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),

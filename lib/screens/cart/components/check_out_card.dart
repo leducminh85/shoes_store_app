@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/screens/payment/payment_screen.dart';
+import 'package:shop_app/utils/create_id.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -85,6 +89,11 @@ class _CheckoutCardState extends State<CheckoutCard> {
                   child: DefaultButton(
                     text: "Check Out",
                     press: () {
+                      currentOrder.updateOrder(Order(
+                        cart: cart,
+                        id: generateRandomNumberString(5),
+                        createdDay: DateTime.now(),
+                      ));
                       Navigator.pushNamed(context, PaymentScreen.routeName);
                     },
                   ),
