@@ -8,8 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/Cart.dart';
 
 class CheckoutCard extends StatefulWidget {
-  static String routeName = "/payment";
-
   @override
   _CheckoutCardState createState() => _CheckoutCardState();
 }
@@ -60,7 +58,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Proceed to pay",
+                    text: "Cancel",
                     press: () {},
                   ),
                 ),

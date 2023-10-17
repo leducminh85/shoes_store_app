@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/screens/order_detail/components/check_out_card.dart';
 
 import 'components/body.dart';
 
@@ -16,6 +17,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
+      bottomNavigationBar: CheckoutCard(),
     );
   }
 
