@@ -13,6 +13,7 @@ import '../../../size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/models/Cart.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shop_app/components/loading.dart';
 
 class CheckoutCard extends StatefulWidget {
   static String routeName = "/payment";
@@ -22,6 +23,26 @@ class CheckoutCard extends StatefulWidget {
 }
 
 class _CheckoutCardState extends State<CheckoutCard> {
+  void _showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+            color: kPrimaryLightColor,
+            size: 100,
+          ),
+        );
+      },
+    );
+
+    // Simulate a delay (e.g., network request)
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pop();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,39 +90,37 @@ class _CheckoutCardState extends State<CheckoutCard> {
                   child: DefaultButton(
                     text: "Proceed to pay",
                     press: () {
-                      currentOrder.updateOrder(Order(
-                          address: shippingAddress,
-                          trackingNumber: generateRandomNumberString(10),
-                          selectedPayment: currentPayment));
-                      orders.addToOrders(currentOrder.order);
+                      _showLoadingDialog(context);
+                      Future.delayed(Duration(seconds: 2), () {
+                        currentOrder.updateOrder(Order(
+                            address: shippingAddress,
+                            trackingNumber: generateRandomNumberString(10),
+                            selectedPayment: currentPayment));
+                        orders.addToOrders(currentOrder.order);
 
-                      Fluttertoast.showToast(
-                          msg: "Payment successful!",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: kPrimaryColor,
-                          textColor: Colors.white,
-                          fontSize: 16.0);
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      Navigator.pushNamed(
-                        context,
-                        OrderDetailScreen.routeName,
-                        arguments: {
-                          'order': orders
-                              .orderListing[orders.orderListing.length - 1]
-                        },
-                      );
-
-                      Future.delayed(Duration(seconds: 3), () {
                         resetCart();
                         currentOrder.resetOrder();
                         resetPayment();
+
+                        Fluttertoast.showToast(
+                            msg: "Payment successful!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: kPrimaryColor,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                        Navigator.pushNamed(
+                          context,
+                          OrderDetailScreen.routeName,
+                          arguments: {
+                            'order': orders
+                                .orderListing[orders.orderListing.length - 1]
+                          },
+                        );
                       });
-                      // cart.resetCart();
-                      // currentOrder.resetOrder();
-                      // resetPayment();
                     },
                   ),
                 ),

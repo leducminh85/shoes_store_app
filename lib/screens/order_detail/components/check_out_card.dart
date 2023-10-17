@@ -60,7 +60,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Cancel",
+                    text: "Cancel order",
                     press: () {},
                   ),
                 ),

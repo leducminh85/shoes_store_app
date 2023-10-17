@@ -51,6 +51,7 @@ class _SizeDotsState extends State<SizeDots> {
           Row(
             children: [
               RoundedIconBtn(
+                showShadow: true,
                 icon: Icons.remove,
                 press: () {
                   setState(() {

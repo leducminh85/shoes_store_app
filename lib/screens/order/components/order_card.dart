@@ -86,7 +86,7 @@ class OrderCard extends StatelessWidget {
                             width: 50,
                           ),
                           Text(
-                            "\$${orderItem.cart?.totalValue}",
+                            "\$${orderItem.cart?.totalValue.abs().toStringAsFixed(3)}",
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
