@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/models/PaymentOption.dart';
@@ -11,6 +12,7 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CheckoutCard extends StatefulWidget {
   static String routeName = "/payment";
@@ -71,6 +73,16 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           address: shippingAddress,
                           trackingNumber: generateRandomNumberString(10),
                           selectedPayment: currentPayment));
+                      Fluttertoast.showToast(
+                          msg: "Payment successful!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: kPrimaryColor,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
                       Navigator.pushNamed(context, OrderDetailScreen.routeName);
                     },
                   ),
