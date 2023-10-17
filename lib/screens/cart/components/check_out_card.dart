@@ -90,7 +90,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     text: "Check Out",
                     press: () {
                       currentOrder.updateOrder(Order(
-                        cart: cart,
+                        cart: new CartModel.copyObject(other: cart),
                         id: generateRandomNumberString(5),
                         createdDay: DateTime.now(),
                       ));

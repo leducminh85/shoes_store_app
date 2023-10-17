@@ -37,7 +37,13 @@ class CartModel extends ChangeNotifier {
 
   double get totalValue => _totalValue;
   List<CartItem> get demoCarts => _demoCarts;
+  CartModel.copyObject({required CartModel other})
+      : _demoCarts = other._demoCarts,
+        _totalValue = other._totalValue;
 
+  CartModel()
+      : _demoCarts = [],
+        _totalValue = 0;
   void addToCart(CartItem cart) {
     final index = _demoCarts.indexWhere(
         (item) => item.product == cart.product && item.size == cart.size);

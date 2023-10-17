@@ -28,27 +28,31 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: getProportionateScreenHeight(20)),
-            ChooseTypeOfOrders(type: type, setType: setType),
-            SizedBox(height: getProportionateScreenWidth(30)),
-            ...List.generate(
-              orders.orderListing.length,
-              (index) {
-                if (orders.orderListing[index].status == type)
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: OrderCard(
-                      cartItem: orders.orderListing[index].cart!.demoCarts[0],
-                    ),
-                  );
-                else
-                  return SizedBox();
-              },
-            ),
-            SizedBox(height: getProportionateScreenWidth(30)),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(2),
+          child: Column(
+            children: [
+              SizedBox(height: getProportionateScreenHeight(20)),
+              ChooseTypeOfOrders(type: type, setType: setType),
+              SizedBox(height: getProportionateScreenWidth(30)),
+              ...List.generate(
+                orders.orderListing.length,
+                (index) {
+                  if (orders.orderListing[index].status == type)
+                    return Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child: OrderCard(
+                        orderItem: orders.orderListing[index],
+                      ),
+                    );
+                  else
+                    return SizedBox();
+                },
+              ),
+              SizedBox(height: getProportionateScreenWidth(30)),
+            ],
+          ),
         ),
       ),
     );

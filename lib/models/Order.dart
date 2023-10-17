@@ -21,6 +21,14 @@ class Order {
     this.selectedPayment,
     this.status = 'Confirmed',
   });
+  Order.copyObject({required Order other})
+      : id = other.id,
+        trackingNumber = other.trackingNumber,
+        address = other.address,
+        createdDay = other.createdDay,
+        cart = other.cart,
+        selectedPayment = other.selectedPayment,
+        status = other.status;
 }
 
 class OrderModel extends ChangeNotifier {

@@ -92,8 +92,20 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       Navigator.pushNamed(
                         context,
                         OrderDetailScreen.routeName,
-                        arguments: {'order': currentOrder.order},
+                        arguments: {
+                          'order': orders
+                              .orderListing[orders.orderListing.length - 1]
+                        },
                       );
+
+                      Future.delayed(Duration(seconds: 3), () {
+                        // cart.resetCart();
+                        // currentOrder.resetOrder();
+                        // resetPayment();
+                      });
+                      // cart.resetCart();
+                      // currentOrder.resetOrder();
+                      // resetPayment();
                     },
                   ),
                 ),
