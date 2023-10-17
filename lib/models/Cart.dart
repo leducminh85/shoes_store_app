@@ -15,17 +15,21 @@ class CartItem {
 class CartModel extends ChangeNotifier {
   List<CartItem> _demoCarts;
   double _totalValue;
+  int _totalQuantity;
 
   double get totalValue => _totalValue;
   List<CartItem> get demoCarts => _demoCarts;
+  int get totalQuantity => _totalQuantity;
 
   CartModel.copyObject({required CartModel other})
       : _demoCarts = other._demoCarts,
-        _totalValue = other._totalValue;
+        _totalValue = other._totalValue,
+        _totalQuantity = other._totalQuantity;
 
   CartModel()
       : _demoCarts = [],
-        _totalValue = 0;
+        _totalValue = 0,
+        _totalQuantity = 0;
 
   void addToCart(CartItem cartItem) {
     final index = _demoCarts.indexWhere((item) =>
@@ -39,12 +43,15 @@ class CartModel extends ChangeNotifier {
       _demoCarts[index].numOfItem += cartItem.numOfItem;
     }
     _totalValue += cartItem.numOfItem * cartItem.product.price;
+    _totalQuantity += cartItem.numOfItem;
     notifyListeners();
   }
 
   void removeFromCart(int index) {
     _totalValue -=
         _demoCarts[index].numOfItem * _demoCarts[index].product.price;
+    _totalQuantity -= _demoCarts[index].numOfItem;
+
     _demoCarts.removeAt(index);
     notifyListeners();
   }
@@ -52,6 +59,7 @@ class CartModel extends ChangeNotifier {
   void updateAmountOfProduct(int index, int change) {
     _demoCarts[index].numOfItem += change;
     _totalValue += change * _demoCarts[index].product.price;
+    _totalQuantity += change;
     notifyListeners();
   }
 }

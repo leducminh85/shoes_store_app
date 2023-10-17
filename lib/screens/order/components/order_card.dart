@@ -50,19 +50,50 @@ class OrderCard extends StatelessWidget {
                         style: TextStyle(color: Colors.black, fontSize: 16),
                         maxLines: 2,
                       ),
-                      Text(
-                        "Tracking number VN${orderItem.trackingNumber}",
-                        style: TextStyle(fontSize: 12),
-                        maxLines: 2,
+                      Row(
+                        children: [
+                          Text(
+                            "Tracking number ",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            "VN${orderItem.trackingNumber}",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Quantity ${orderItem.cart?.demoCarts[0].numOfItem}',
-                        style: TextStyle(fontSize: 12),
+                      Row(
+                        children: [
+                          Text(
+                            'Total quantities ',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            "${orderItem.cart?.totalQuantity}",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'Total amount ${orderItem.cart?.totalValue}',
-                        style: TextStyle(fontSize: 12),
-                      )
+                      Row(
+                        children: [
+                          Text(
+                            'Total amount ',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Text(
+                            "\$${orderItem.cart?.totalValue}",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: kPrimaryMediumColor),
+                          ),
+                        ],
+                      ),
                     ],
                   )
                 ],
@@ -71,7 +102,16 @@ class OrderCard extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('View detail'), Text(orderItem.status)],
+                  children: [
+                    Text(
+                      'View detail',
+                      style: TextStyle(color: kPrimaryMediumColor),
+                    ),
+                    Text(
+                      orderItem.status,
+                      style: TextStyle(color: Colors.green),
+                    )
+                  ],
                 ),
               )
             ]),
