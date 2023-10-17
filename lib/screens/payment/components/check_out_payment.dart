@@ -75,10 +75,6 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           selectedPayment: currentPayment));
                       orders.addToOrders(currentOrder.order);
 
-                      // cart.resetCart();
-                      // currentOrder.resetOrder();
-                      // resetPayment();
-
                       Fluttertoast.showToast(
                           msg: "Payment successful!",
                           toastLength: Toast.LENGTH_SHORT,
@@ -99,9 +95,9 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       );
 
                       Future.delayed(Duration(seconds: 3), () {
-                        // cart.resetCart();
-                        // currentOrder.resetOrder();
-                        // resetPayment();
+                        resetCart();
+                        currentOrder.resetOrder();
+                        resetPayment();
                       });
                       // cart.resetCart();
                       // currentOrder.resetOrder();
