@@ -88,18 +88,13 @@ class OrdersModel extends ChangeNotifier {
     if (index >= 0) _orderListing.removeAt(index);
     notifyListeners();
   }
-  // void removeFromCart(int index) {
-  //   _totalValue -=
-  //       _demoCarts[index].numOfItem * _demoCarts[index].product.price;
-  //   _demoCarts.removeAt(index);
-  //   notifyListeners();
-  // }
 
-  // void updateAmountOfProduct(int index, int change) {
-  //   _demoCarts[index].numOfItem += change;
-  //   _totalValue += change * _demoCarts[index].product.price;
-  //   notifyListeners();
-  // }
+  void changeStatusOrder(Order order, String state) {
+    final index =
+        _orderListing.indexWhere((orderItem) => orderItem.id == order.id);
+    if (index >= 0) _orderListing[index].status = state;
+    notifyListeners();
+  }
 }
 
 OrdersModel orders = OrdersModel();

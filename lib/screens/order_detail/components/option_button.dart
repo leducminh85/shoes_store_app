@@ -31,7 +31,7 @@ class OptionButton extends StatelessWidget {
                 height: 50,
                 buttonColor: kPrimaryGradientColor,
                 press: () {
-                  newOrder.status = 'Delivered';
+                  orders.changeStatusOrder(newOrder, 'Delivered');
                   Fluttertoast.showToast(
                       msg: "Order has been delivered!",
                       toastLength: Toast.LENGTH_SHORT,
