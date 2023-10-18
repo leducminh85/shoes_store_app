@@ -10,7 +10,7 @@ class Order {
   final DateTime? createdDay;
   final CartModel? cart;
   final PaymentOption? selectedPayment;
-  final String status;
+  String status;
 
   Order({
     this.id,
@@ -82,6 +82,12 @@ class OrdersModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void cancelOrder(Order order) {
+    final index =
+        _orderListing.indexWhere((orderItem) => orderItem.id == order.id);
+    if (index >= 0) _orderListing.removeAt(index);
+    notifyListeners();
+  }
   // void removeFromCart(int index) {
   //   _totalValue -=
   //       _demoCarts[index].numOfItem * _demoCarts[index].product.price;

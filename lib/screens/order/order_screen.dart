@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/coustom_bottom_nav_bar.dart';
 import 'package:shop_app/enums.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/models/Order.dart';
 
 import 'components/body.dart';
 
@@ -14,11 +15,25 @@ class OrdersScreen extends StatefulWidget {
 
 class _OrdersScreenState extends State<OrdersScreen> {
   @override
+  void initState() {
+    super.initState();
+    // 2
+    orders.addListener(() => mounted ? setState(() {}) : null);
+  }
+
+  @override
+  void dispose() {
+    // 3
+    orders.removeListener(() {});
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.orders),
     );
   }
 

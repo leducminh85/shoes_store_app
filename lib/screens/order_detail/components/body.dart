@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/screens/order_detail/components/option_button.dart';
 import 'package:shop_app/screens/order_detail/components/payment_option.dart';
 import 'package:shop_app/screens/order_detail/components/productListing.dart';
 import 'package:shop_app/screens/order_detail/components/shipping_info.dart';
@@ -26,6 +27,8 @@ class _BodyState extends State<Body> {
             ProductListing(),
             SizedBox(height: getProportionateScreenWidth(30)),
             PaymentOption(),
+            SizedBox(height: getProportionateScreenWidth(30)),
+            OptionButton(),
             SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),

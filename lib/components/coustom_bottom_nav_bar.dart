@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/order/order_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
+import 'package:shop_app/utils/slide_animation.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -40,23 +41,25 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/Shop Icon.svg",
+                    color: MenuState.home == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () => Navigator.push(
+                      context, SlideRightRoute(page: HomeScreen()))),
+              IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu
+                  "assets/icons/Orders.svg",
+                  color: MenuState.orders == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, HomeScreen.routeName),
-              ),
-              IconButton(
-                icon: SvgPicture.asset("assets/icons/Orders.svg"),
                 onPressed: () {
-                  Navigator.pushNamed(context, OrdersScreen.routeName);
+                  Navigator.push(
+                      context, SlideRightRoute(page: OrdersScreen()));
                 },
-                color: MenuState.orders == selectedMenu
-                    ? kPrimaryColor
-                    : inActiveIconColor,
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -65,8 +68,8 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
+                onPressed: () => Navigator.push(
+                    context, SlideRightRoute(page: ProfileScreen())),
               ),
             ],
           )),
