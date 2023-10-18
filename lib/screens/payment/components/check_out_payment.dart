@@ -29,8 +29,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Center(
-          child: LoadingAnimationWidget.staggeredDotsWave(
-            color: kPrimaryLightColor,
+          child: LoadingAnimationWidget.halfTriangleDot(
+            color: kPrimaryMediumColor,
             size: 100,
           ),
         );
@@ -38,7 +38,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
     );
 
     // Simulate a delay (e.g., network request)
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pop();
     });
   }
@@ -91,7 +91,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     text: "Proceed to pay",
                     press: () {
                       _showLoadingDialog(context);
-                      Future.delayed(Duration(seconds: 2), () {
+                      Future.delayed(Duration(seconds: 3), () {
                         currentOrder.updateOrder(Order(
                             address: shippingAddress,
                             trackingNumber: generateRandomNumberString(10),

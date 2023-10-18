@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/screens/payment/payment_screen.dart';
@@ -20,6 +21,26 @@ class CheckoutCard extends StatefulWidget {
 }
 
 class _CheckoutCardState extends State<CheckoutCard> {
+  void _showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Center(
+          child: LoadingAnimationWidget.halfTriangleDot(
+            color: kPrimaryMediumColor,
+            size: 100,
+          ),
+        );
+      },
+    );
+
+    // Simulate a delay (e.g., network request)
+    Future.delayed(Duration(seconds: 1), () {
+      Navigator.of(context).pop();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -94,7 +115,10 @@ class _CheckoutCardState extends State<CheckoutCard> {
                         id: generateRandomNumberString(5),
                         createdDay: DateTime.now(),
                       ));
-                      Navigator.pushNamed(context, PaymentScreen.routeName);
+                      _showLoadingDialog(context);
+                      Future.delayed(Duration(seconds: 1), () {
+                        Navigator.pushNamed(context, PaymentScreen.routeName);
+                      });
                     },
                   ),
                 ),
