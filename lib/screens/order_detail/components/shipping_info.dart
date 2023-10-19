@@ -26,7 +26,8 @@ class ShippingInfo extends StatelessWidget {
                 title: "Order No.${newOrder.id}",
                 press: () {},
               ),
-              Text("${DateFormat('dd-MMM-yyyy').format(newOrder.createdDay!)}")
+              Text(
+                  "${DateFormat('HH:mm  dd/MM/yyyy').format(newOrder.createdDay!)}")
             ],
           ),
           SizedBox(
