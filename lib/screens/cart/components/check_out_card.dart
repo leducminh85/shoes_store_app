@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Order.dart';
@@ -109,6 +110,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Check Out",
+                    isDisabled: cart.demoCarts.length <= 0,
                     press: () {
                       currentOrder.updateOrder(Order(
                         cart: cart,

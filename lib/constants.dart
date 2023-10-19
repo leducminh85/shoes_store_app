@@ -23,6 +23,15 @@ const kPrimaryGradientColor3 = LinearGradient(
   colors: [Color(0xFFFFECDE), Color(0xFFFFECDE)],
 );
 
+const kPrimaryGradientColor4 = LinearGradient(
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+  colors: [
+    Color.fromARGB(255, 202, 202, 202),
+    Color.fromARGB(255, 202, 202, 202)
+  ],
+);
+
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
 

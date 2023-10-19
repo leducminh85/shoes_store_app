@@ -24,58 +24,64 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
+        child: Column(
           children: [
-            SizedBox(
-                width: 88,
-                child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    child: AspectRatio(
-                      aspectRatio: 0.88,
-                      child: Container(
-                        padding:
-                            EdgeInsets.all(getProportionateScreenWidth(10)),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF5F6F9),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Image.asset(widget.cartItem.product.images[0]),
-                      ),
-                    ))),
-            SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
               children: [
-                Text(
-                  widget.cartItem.product.title,
-                  style: TextStyle(color: Colors.black, fontSize: 16),
-                  maxLines: 2,
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                SizedBox(
+                    width: 88,
+                    child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                        child: AspectRatio(
+                          aspectRatio: 0.88,
+                          child: Container(
+                            padding:
+                                EdgeInsets.all(getProportionateScreenWidth(10)),
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF5F6F9),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child:
+                                Image.asset(widget.cartItem.product.images[0]),
+                          ),
+                        ))),
+                SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text.rich(
-                      TextSpan(
-                        text: "\$${widget.cartItem.product.price}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: kPrimaryMediumColor),
-                      ),
-                    ),
-                    SizedBox(width: 40),
                     Text(
-                      "Size: ${widget.cartItem.size}",
+                      widget.cartItem.product.title,
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      maxLines: 2,
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            text: "\$${widget.cartItem.product.price}",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: kPrimaryMediumColor),
+                          ),
+                        ),
+                        SizedBox(width: 40),
+                        Text(
+                          "Size: ${widget.cartItem.size}",
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ],
+                    ),
+                    Text(
+                      'Quantity ${widget.cartItem.numOfItem}',
                       style: TextStyle(fontSize: 12),
                     )
                   ],
-                ),
-                Text(
-                  'Quantity ${widget.cartItem.numOfItem}',
-                  style: TextStyle(fontSize: 12),
                 )
               ],
-            )
+            ),
           ],
         ),
         decoration: BoxDecoration(

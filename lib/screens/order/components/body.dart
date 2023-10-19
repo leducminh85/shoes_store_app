@@ -24,8 +24,14 @@ class _BodyState extends State<Body> {
     return newType;
   }
 
+  List<Order> confirmList = [];
+  List<Order> deliveredList = [];
+
   @override
   Widget build(BuildContext context) {
+    List<Order> selectedOrderList = orders.orderListing
+        .where((orderItem) => orderItem.status == type)
+        .toList();
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -35,21 +41,40 @@ class _BodyState extends State<Body> {
               SizedBox(height: getProportionateScreenHeight(20)),
               ChooseTypeOfOrders(type: type, setType: setType),
               SizedBox(height: getProportionateScreenWidth(30)),
-              ...List.generate(
-                orders.orderListing.length,
-                (index) {
-                  if (orders.orderListing[index].status == type)
-                    return Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child: OrderCard(
-                        orderItem: orders.orderListing[index],
-                      ),
-                    );
-                  else
-                    return SizedBox();
-                },
+              Column(
+                children: selectedOrderList.length > 0
+                    ? [
+                        ...List.generate(
+                          selectedOrderList.length,
+                          (index) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: OrderCard(
+                                orderItem: selectedOrderList[index],
+                              ),
+                            );
+                          },
+                        ),
+                      ]
+                    : [
+                        SizedBox(
+                            width: double.maxFinite,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 100, horizontal: 50),
+                              child: SvgPicture.asset(
+                                "assets/icons/Empty List.svg",
+                                width: 200,
+                                height: 200,
+                                color: Colors.grey.shade300,
+                              ),
+                            ))
+                      ],
               ),
+              // if (orders.orderListing.length != 0)
+
+              //   else ...List.build(context),
               SizedBox(height: getProportionateScreenWidth(30)),
             ],
           ),

@@ -50,6 +50,7 @@ class _CartCardState extends State<CartCard> {
                   widget.cartItem.product.title,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                   maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 10),
                 Row(
