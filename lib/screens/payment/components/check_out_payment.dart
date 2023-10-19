@@ -115,10 +115,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                         Navigator.pushNamed(
                           context,
                           OrderDetailScreen.routeName,
-                          arguments: {
-                            'order': orders
-                                .orderListing[orders.orderListing.length - 1]
-                          },
+                          arguments: {'order': orders.orderListing[0]},
                         );
                       });
                     },
