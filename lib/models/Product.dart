@@ -111,3 +111,19 @@ List<Product> demoProducts = [
 
 const String description =
     "Giày AKKA ACTIVE B2221 là phiên bản ACTIVE tiếp theo được ra mắt của thương hiệu AKKA...";
+
+class Category {
+  final String icon, text;
+  final String? type;
+
+  Category({required this.icon, required this.text, this.type = 'item'});
+}
+
+List<Category> categories = [
+  Category(icon: "assets/icons/puma_icon.svg", text: 'Puma'),
+  Category(icon: "assets/icons/nike_icon.svg", text: 'Nike'),
+  Category(icon: "assets/icons/adidas_icon.svg", text: 'Adidas'),
+  // Category(icon: "assets/icons/puma_icon.svg", text: 'Puma'),
+  // Category(icon: "assets/icons/nike_icon.svg", text: 'Nike'),
+  // Category(icon: "assets/icons/adidas_icon.svg", text: 'Adidas'),
+];

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/SearchData.dart';
 import 'package:shop_app/components/product_card.dart';
+import 'package:shop_app/screens/home/components/categories.dart';
 import 'package:shop_app/size_config.dart';
 
 class SearchResults extends StatefulWidget {
@@ -24,44 +25,73 @@ class _SearchResultsState extends State<SearchResults> {
     super.dispose();
   }
 
+  bool checkProduct(Product product) {
+    // if (searchMode.searchText == '' && searchMode.brandSelected != -1) {
+    //   if (product.brand == categories[searchMode.brandSelected].text)
+    //     return true;
+    //   else
+    //     return false;
+    // } else if ((' ' + product.title.toUpperCase())
+    //     .contains(' ' + searchMode.searchText.toUpperCase())) {
+    //   if (searchMode.brandSelected == -1) return true;
+    //   if (product.brand == categories[searchMode.brandSelected].text)
+    //     return true;
+    //   return false;
+    // }
+
+    if (searchMode.searchText != '') {
+      if ((' ' + product.title.toUpperCase())
+          .contains(' ' + searchMode.searchText.toUpperCase())) {
+        if (searchMode.brandSelected == -1) return true;
+        if (product.brand == categories[searchMode.brandSelected].text)
+          return true;
+        return false;
+      }
+
+      return false;
+    }
+
+    if (searchMode.brandSelected != -1) if (product.brand ==
+        categories[searchMode.brandSelected].text) return true;
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Product> result = searchMode.searchText != ''
-        ? demoProducts
-            .where((product) => (' ' + product.title.toUpperCase())
-                .contains(' ' + searchMode.searchText.toUpperCase()))
-            .toList()
-        : [];
-    if (result.length > 0)
-      return Container(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Wrap(
-            spacing: 08.0, // Horizontal spacing between items
-            runSpacing: 0.0, // Vertical spacing between rows
-            children: [
-              ...List.generate(
-                result.length,
-                (index) {
-                  return ProductCard(product: result[index]);
-                },
+    List<Product> result =
+        demoProducts.where((product) => checkProduct(product)).toList();
+
+    return Container(
+        child: Column(children: [
+      Categories(),
+      (result.length > 0)
+          ? SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Wrap(
+                spacing: 08.0, // Horizontal spacing between items
+                runSpacing: 0.0, // Vertical spacing between rows
+                children: [
+                  ...List.generate(
+                    result.length,
+                    (index) {
+                      return ProductCard(product: result[index]);
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        // decoration: BoxDecoration(color: Colors.red),
-      );
-    else
-      return SizedBox(
-          width: double.maxFinite,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 200, horizontal: 50),
-            child: SvgPicture.asset(
-              "assets/icons/Empty List.svg",
-              width: 200,
-              height: 200,
-              color: Colors.grey.shade300,
-            ),
-          ));
+            )
+          : SizedBox(
+              width: double.maxFinite,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 200, horizontal: 50),
+                child: SvgPicture.asset(
+                  "assets/icons/Empty List.svg",
+                  width: 200,
+                  height: 200,
+                  color: Colors.grey.shade300,
+                ),
+              )),
+      // decoration: BoxDecoration(color: Colors.red),
+    ]));
   }
 }

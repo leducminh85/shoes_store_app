@@ -41,7 +41,7 @@ class _BodyState extends State<Body> {
               SizedBox(height: getProportionateScreenHeight(20)),
               HomeHeader(),
               SizedBox(height: getProportionateScreenWidth(10)),
-              (searchMode.searchText == '')
+              (searchMode.searchText == '' && searchMode.brandSelected == -1)
                   ? Column(
                       children: [
                         DiscountBanner(),
