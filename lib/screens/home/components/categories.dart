@@ -12,14 +12,12 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  int selectedItem = searchMode.brandSelected;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(
+        padding: EdgeInsets.symmetric(
             // left: getProportionateScreenWidth(0),
-            bottom: getProportionateScreenWidth(20)),
+            vertical: getProportionateScreenWidth(10)),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -30,12 +28,9 @@ class _CategoriesState extends State<Categories> {
                   icon: '',
                   text: 'Brand',
                   press: () {
-                    setState(() {
-                      selectedItem = -1;
-                    });
                     searchMode.resetBrand();
                   },
-                  isSelected: selectedItem == -1,
+                  isSelected: searchMode.brandSelected == -1,
                 ),
                 ...List.generate(
                   categories.length,
@@ -44,17 +39,13 @@ class _CategoriesState extends State<Categories> {
                     text: categories[index].text,
                     type: categories[index].type,
                     press: () {
-                      if (selectedItem == index)
-                        setState(() {
-                          selectedItem = -1;
-                        });
-                      else
-                        setState(() {
-                          selectedItem = index;
-                        });
-                      searchMode.setBrandSelected(index);
+                      if (searchMode.brandSelected == index) {
+                        searchMode.setBrandSelected(-1);
+                      } else {
+                        searchMode.setBrandSelected(index);
+                      }
                     },
-                    isSelected: selectedItem == index,
+                    isSelected: searchMode.brandSelected == index,
                   ),
                 ),
               ]),

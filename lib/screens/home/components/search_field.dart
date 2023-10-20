@@ -38,6 +38,8 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
+    myController.text = searchMode.searchText;
+
     return Container(
         width: SizeConfig.screenWidth * 0.6,
         decoration: BoxDecoration(

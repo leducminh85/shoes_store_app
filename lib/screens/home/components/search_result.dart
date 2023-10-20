@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/SearchData.dart';
 import 'package:shop_app/components/product_card.dart';
@@ -26,19 +27,6 @@ class _SearchResultsState extends State<SearchResults> {
   }
 
   bool checkProduct(Product product) {
-    // if (searchMode.searchText == '' && searchMode.brandSelected != -1) {
-    //   if (product.brand == categories[searchMode.brandSelected].text)
-    //     return true;
-    //   else
-    //     return false;
-    // } else if ((' ' + product.title.toUpperCase())
-    //     .contains(' ' + searchMode.searchText.toUpperCase())) {
-    //   if (searchMode.brandSelected == -1) return true;
-    //   if (product.brand == categories[searchMode.brandSelected].text)
-    //     return true;
-    //   return false;
-    // }
-
     if (searchMode.searchText != '') {
       if ((' ' + product.title.toUpperCase())
           .contains(' ' + searchMode.searchText.toUpperCase())) {
@@ -47,7 +35,6 @@ class _SearchResultsState extends State<SearchResults> {
           return true;
         return false;
       }
-
       return false;
     }
 
@@ -63,7 +50,24 @@ class _SearchResultsState extends State<SearchResults> {
 
     return Container(
         child: Column(children: [
-      Categories(),
+      Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+                child: IconButton(
+                  onPressed: () {
+                    searchMode.resetBrand();
+                    searchMode.setSearchText('');
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: kPrimaryColor,
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 0)),
+            Categories()
+          ]),
       (result.length > 0)
           ? SingleChildScrollView(
               scrollDirection: Axis.vertical,
@@ -91,7 +95,6 @@ class _SearchResultsState extends State<SearchResults> {
                   color: Colors.grey.shade300,
                 ),
               )),
-      // decoration: BoxDecoration(color: Colors.red),
     ]));
   }
 }
