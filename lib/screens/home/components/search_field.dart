@@ -64,15 +64,17 @@ class _SearchFieldState extends State<SearchField> {
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           hintText: "Search product",
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              Icons.highlight_off,
-                              color: kPrimaryColor,
-                            ),
-                            onPressed: () {
-                              myController.text = '';
-                            },
-                          ),
+                          suffixIcon: myController.text == ''
+                              ? null
+                              : IconButton(
+                                  icon: Icon(
+                                    Icons.highlight_off,
+                                    color: kPrimaryColor,
+                                  ),
+                                  onPressed: () {
+                                    myController.text = '';
+                                  },
+                                ),
                           prefixIcon: Icon(
                             Icons.search,
                             color: kPrimaryColor,

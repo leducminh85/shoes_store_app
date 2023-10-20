@@ -33,20 +33,23 @@ class _SearchResultsState extends State<SearchResults> {
             .toList()
         : [];
     if (result.length > 0)
-      return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Wrap(
-          spacing: 8.0, // Horizontal spacing between items
-          runSpacing: 8.0, // Vertical spacing between rows
-          children: [
-            ...List.generate(
-              result.length,
-              (index) {
-                return ProductCard(product: result[index]);
-              },
-            ),
-          ],
+      return Container(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Wrap(
+            spacing: 08.0, // Horizontal spacing between items
+            runSpacing: 0.0, // Vertical spacing between rows
+            children: [
+              ...List.generate(
+                result.length,
+                (index) {
+                  return ProductCard(product: result[index]);
+                },
+              ),
+            ],
+          ),
         ),
+        // decoration: BoxDecoration(color: Colors.red),
       );
     else
       return SizedBox(
