@@ -77,7 +77,8 @@ class OrdersModel extends ChangeNotifier {
   List<Order> get orderListing => _orderListing;
 
   void addToOrders(Order order) {
-    _orderListing.add(order);
+    // _orderListing.add(order);
+    _orderListing.insert(0, order);
 
     notifyListeners();
   }

@@ -47,8 +47,10 @@ class CustomBottomNavBar extends StatelessWidget {
                         ? kPrimaryColor
                         : inActiveIconColor,
                   ),
-                  onPressed: () => Navigator.push(
-                      context, SlideRightRoute(page: HomeScreen()))),
+                  onPressed: () => MenuState.home == selectedMenu
+                      ? {}
+                      : Navigator.push(
+                          context, SlideRightRoute(page: HomeScreen()))),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Orders.svg",
@@ -56,10 +58,10 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context, SlideRightRoute(page: OrdersScreen()));
-                },
+                onPressed: () => MenuState.orders == selectedMenu
+                    ? {}
+                    : Navigator.push(
+                        context, SlideRightRoute(page: OrdersScreen())),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -68,8 +70,10 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.push(
-                    context, SlideRightRoute(page: ProfileScreen())),
+                onPressed: () => MenuState.profile == selectedMenu
+                    ? {}
+                    : Navigator.push(
+                        context, SlideRightRoute(page: ProfileScreen())),
               ),
             ],
           )),

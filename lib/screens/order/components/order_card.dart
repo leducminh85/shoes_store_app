@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/Order.dart';
@@ -108,7 +109,7 @@ class OrderCard extends StatelessWidget {
                       style: TextStyle(color: kPrimaryMediumColor),
                     ),
                     Text(
-                      orderItem.status,
+                      "${DateFormat('HH:mm  dd/MM/yyyy').format(orderItem.createdDay!)}",
                       style: TextStyle(color: Colors.green),
                     )
                   ],

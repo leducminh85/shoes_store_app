@@ -16,24 +16,27 @@ class NewestProducts extends StatelessWidget {
           child: SectionTitle(title: "Newest Products", press: () {}),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                demoProducts.length,
-                (index) {
-                  if (demoProducts[index].isPopular)
-                    return ProductCard(product: demoProducts[index]);
+        Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(10)),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ...List.generate(
+                    demoProducts.length,
+                    (index) {
+                      if (demoProducts[index].isPopular)
+                        return ProductCard(product: demoProducts[index]);
 
-                  return SizedBox
-                      .shrink(); // here by default width and height is 0
-                },
+                      return SizedBox
+                          .shrink(); // here by default width and height is 0
+                    },
+                  ),
+                  SizedBox(width: getProportionateScreenWidth(10)),
+                ],
               ),
-              SizedBox(width: getProportionateScreenWidth(20)),
-            ],
-          ),
-        )
+            ))
       ],
     );
   }
