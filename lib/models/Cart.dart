@@ -26,7 +26,7 @@ class CartModel extends ChangeNotifier {
         _totalValue = other._totalValue,
         _totalQuantity = other._totalQuantity;
 
-  CartModel()
+  CartModel([decode])
       : _demoCarts = [],
         _totalValue = 0,
         _totalQuantity = 0;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/services/cartServices.dart';
 
 import 'components/body.dart';
 import 'components/check_out_card.dart';
@@ -16,7 +17,10 @@ class _CartScreenState extends State<CartScreen> {
   void initState() {
     super.initState();
     // 2
-    cart.addListener(() => mounted ? setState(() {}) : null);
+    cart.addListener(() {
+      print('object');
+      saveCart(cart);
+    });
   }
 
   @override
