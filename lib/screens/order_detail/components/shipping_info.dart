@@ -56,7 +56,7 @@ class ShippingInfo extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          ' Puerto Rico ',
+                          "${newOrder.customer}",
                           style: TextStyle(color: Colors.grey),
                         ),
                       ],
