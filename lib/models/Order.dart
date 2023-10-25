@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/PaymentOption.dart';
+import 'package:shop_app/models/User.dart';
 
 class Order {
   final String? id;
   final String? trackingNumber;
   final String? address;
+  final String? customer;
 
   final DateTime? createdDay;
   final CartModel? cart;
@@ -16,6 +18,7 @@ class Order {
     this.id,
     this.trackingNumber,
     this.address,
+    this.customer,
     this.createdDay,
     this.cart,
     this.selectedPayment,
@@ -25,6 +28,7 @@ class Order {
       : id = other.id,
         trackingNumber = other.trackingNumber,
         address = other.address,
+        customer = other.customer,
         createdDay = other.createdDay,
         cart = other.cart,
         selectedPayment = other.selectedPayment,
@@ -35,7 +39,8 @@ class OrderModel extends ChangeNotifier {
   Order _order = Order(
       id: '',
       trackingNumber: '',
-      address: '',
+      address: currentUser.address,
+      customer: currentUser.fullName,
       createdDay: DateTime.now(),
       cart: cart,
       selectedPayment: currentPayment,
@@ -52,6 +57,7 @@ class OrderModel extends ChangeNotifier {
       cart: newOrder.cart ?? _order.cart,
       selectedPayment: newOrder.selectedPayment ?? _order.selectedPayment,
       status: newOrder.status ?? _order.status,
+      customer: newOrder.customer ?? _order.customer,
     );
     notifyListeners();
   }
@@ -60,7 +66,8 @@ class OrderModel extends ChangeNotifier {
     updateOrder(Order(
         id: '',
         trackingNumber: '',
-        address: '',
+        address: currentUser.address,
+        customer: currentUser.fullName,
         createdDay: DateTime.now(),
         cart: cart,
         selectedPayment: currentPayment,
@@ -100,4 +107,4 @@ class OrdersModel extends ChangeNotifier {
 
 OrdersModel orders = OrdersModel();
 
-String shippingAddress = '2972 Westheimer Rd. Santa Ana, Illinois 85486 ';
+// String shippingAddress = '2972 Westheimer Rd. Santa Ana, Illinois 85486 ';

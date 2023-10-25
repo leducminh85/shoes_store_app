@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Order.dart';
 import 'package:shop_app/models/PaymentOption.dart';
+import 'package:shop_app/models/User.dart';
 import 'package:shop_app/screens/order_detail/order_detail_screen.dart';
 import 'package:shop_app/utils/create_id.dart';
 // import 'package:intl/intl';
@@ -93,7 +94,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       _showLoadingDialog(context);
                       Future.delayed(Duration(seconds: 3), () {
                         currentOrder.updateOrder(Order(
-                            address: shippingAddress,
+                            address: currentOrder.order.address,
                             trackingNumber: generateRandomNumberString(10),
                             selectedPayment: currentPayment));
                         orders.addToOrders(currentOrder.order);

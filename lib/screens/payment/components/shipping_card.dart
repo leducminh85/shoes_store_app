@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/models/User.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -24,7 +26,7 @@ class _ShippingCardState extends State<ShippingCard> {
   Widget build(BuildContext context) {
     return Container(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,14 +34,25 @@ class _ShippingCardState extends State<ShippingCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    ' Puerto Rico ',
+                    currentUser.fullName,
                     style: TextStyle(color: Colors.grey),
                   ),
-                  SizedBox(width: 40),
-                  Text(
-                    'Change',
-                    style: TextStyle(color: kPrimaryMediumColor),
-                  ),
+                  TextButton(
+                    onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: "Coming soon!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: kPrimaryColor,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    },
+                    child: Text(
+                      'Change',
+                      style: TextStyle(color: kPrimaryMediumColor),
+                    ),
+                  )
                 ],
               ),
               Row(
@@ -57,7 +70,7 @@ class _ShippingCardState extends State<ShippingCard> {
                       )),
                   Flexible(
                     child: Text(
-                      '2972 Westheimer Rd. Santa Ana, Illinois 85486 ',
+                      widget.shippingAddress,
                       style: TextStyle(color: Colors.grey, fontSize: 12),
                     ),
                   ),
