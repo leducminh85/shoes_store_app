@@ -79,11 +79,9 @@ class _BodyState extends State<Body> {
                             text: 'Cancel',
                             width: getProportionateScreenWidth(150),
                             press: () {
+                              tempUser.updateUserInfo(currentUser.fullName,
+                                  currentUser.phoneNumber, currentUser.address);
                               setState(() {
-                                tempUser.updateUserInfo(
-                                    currentUser.fullName,
-                                    currentUser.phoneNumber,
-                                    currentUser.address);
                                 canBeEdit = false;
                               });
                             },

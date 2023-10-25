@@ -24,18 +24,27 @@ class InfoCard extends StatefulWidget {
 
 class _InfoCardState extends State<InfoCard> {
   final myController = TextEditingController();
-
+  bool isUpdating = false;
   @override
   void initState() {
     super.initState();
     myController.text = widget.content;
-    // widget.user.addListener(() {
-    //   if (myController.text != widget.content)
-    //     myController.text = widget.content;
-    // });
-    // Start listening to changes.
+    widget.user.addListener(() {
+      if (!isUpdating) {
+        myController.text = widget.content;
+      }
+      setState(() {
+        isUpdating = false;
+      });
+    });
+
     myController.addListener(() {
-      if (widget.updateInfo != null) widget.updateInfo!(myController.text);
+      if (widget.updateInfo != null) {
+        setState(() {
+          isUpdating = true;
+        });
+        widget.updateInfo!(myController.text);
+      }
     });
   }
 
