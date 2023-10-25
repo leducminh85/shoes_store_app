@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/SearchData.dart';
 
 import '../../../size_config.dart';
@@ -20,11 +21,14 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     searchMode.addListener(() => mounted ? setState(() {}) : null);
+    cart.addListener(() => mounted ? setState(() {}) : null);
   }
 
   @override
   void dispose() {
     searchMode.removeListener(() {});
+    cart.removeListener(() {});
+
     searchMode.setSearchText('');
     searchMode.onSearchChangeFocus(false);
     super.dispose();
