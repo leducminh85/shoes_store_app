@@ -31,11 +31,19 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(
+              'Personal Infomation',
+              style: TextStyle(
+                fontSize: getProportionateScreenWidth(18),
+                color: Colors.black,
+              ),
+            ),
             InfoCard(
                 title: 'Email',
                 content: tempUser.email,

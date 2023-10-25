@@ -53,6 +53,11 @@ class User extends ChangeNotifier {
     address = newAddress;
     notifyListeners();
   }
+
+  void changePassword(String newPassword) {
+    passwordHash = newPassword;
+    notifyListeners();
+  }
   // bool verifyPassword(String password) {
   //   return Bcrypt.verify(password, passwordHash);
   // }

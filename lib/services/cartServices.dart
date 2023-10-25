@@ -15,10 +15,10 @@ Future<CartModel?> fetchCurrentCard() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? cartJson = prefs.getString('currentCart');
 
-  if (cartJson != null) {
-    CartModel currentCart = CartModel(json.decode(cartJson));
+  // if (cartJson != null) {
+  //   // CartModel currentCart = CartModel(json.decode(cartJson));
 
-    return currentCart;
-  }
+  //   return currentCart;
+  // }
   return null;
 }

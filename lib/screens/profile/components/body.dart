@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/order/order_screen.dart';
 import 'package:shop_app/screens/profile/my_profile_screen.dart';
+import 'package:shop_app/screens/profile/password.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/utils/slide_animation.dart';
 
@@ -31,9 +32,11 @@ class Body extends StatelessWidget {
             },
           ),
           ProfileMenu(
-            text: "Password",
+            text: "Change Password",
             icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () {
+              Navigator.push(context, SlideRightRoute(page: PasswordScreen()));
+            },
           ),
           // ProfileMenu(
           //   text: "Help Center",
