@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/User.dart';
 import 'package:shop_app/size_config.dart';
 
 class InfoCard extends StatefulWidget {
@@ -6,12 +7,16 @@ class InfoCard extends StatefulWidget {
       {Key? key,
       required this.title,
       required this.content,
-      required this.isDisabled})
+      required this.isDisabled,
+      required this.user,
+      this.updateInfo})
       : super(key: key);
 
   final String title;
   final String content;
   final bool isDisabled;
+  final Function? updateInfo;
+  final User user;
 
   @override
   _InfoCardState createState() => _InfoCardState();
@@ -23,9 +28,27 @@ class _InfoCardState extends State<InfoCard> {
   @override
   void initState() {
     super.initState();
-    // Start listening to changes.
-    myController.addListener(() {});
     myController.text = widget.content;
+    // widget.user.addListener(() {
+    //   if (myController.text != widget.content)
+    //     myController.text = widget.content;
+    // });
+    // Start listening to changes.
+    myController.addListener(() {
+      if (widget.updateInfo != null) widget.updateInfo!(myController.text);
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant InfoCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.content != widget.content) {
+      // The parameter has changed
+      myController.text = widget.content;
+
+      setState(() {});
+    }
   }
 
   @override
@@ -61,7 +84,6 @@ class _InfoCardState extends State<InfoCard> {
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
-                  hintText: "Search product",
                   labelStyle: TextStyle(fontSize: 12)),
             ),
             // Text(widget.content),

@@ -46,6 +46,13 @@ class User extends ChangeNotifier {
     };
   }
 
+  void updateUserInfo(
+      String newName, String newPhoneNumber, String newAddress) {
+    fullName = newName;
+    phoneNumber = newPhoneNumber;
+    address = newAddress;
+    notifyListeners();
+  }
   // bool verifyPassword(String password) {
   //   return Bcrypt.verify(password, passwordHash);
   // }

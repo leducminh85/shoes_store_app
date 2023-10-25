@@ -19,6 +19,15 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   bool canBeEdit = false;
+  User tempUser = User(
+      id: currentUser.id,
+      username: currentUser.username,
+      email: currentUser.email,
+      fullName: currentUser.fullName,
+      address: currentUser.address,
+      passwordHash: currentUser.passwordHash,
+      phoneNumber: currentUser.phoneNumber);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,22 +37,37 @@ class _BodyState extends State<Body> {
         child: Column(
           children: <Widget>[
             InfoCard(
-              title: 'Email',
-              content: currentUser.email,
-              isDisabled: true,
-            ),
+                title: 'Email',
+                content: tempUser.email,
+                isDisabled: true,
+                user: tempUser),
             InfoCard(
                 title: 'Name',
-                content: currentUser.fullName,
-                isDisabled: !canBeEdit),
+                content: tempUser.fullName,
+                isDisabled: !canBeEdit,
+                user: tempUser,
+                updateInfo: (newName) {
+                  tempUser.updateUserInfo(
+                      newName, tempUser.phoneNumber, tempUser.address);
+                }),
             InfoCard(
                 title: 'Phone number',
-                content: currentUser.phoneNumber,
-                isDisabled: !canBeEdit),
+                content: tempUser.phoneNumber,
+                isDisabled: !canBeEdit,
+                user: tempUser,
+                updateInfo: (newPhoneNumber) {
+                  tempUser.updateUserInfo(
+                      tempUser.fullName, newPhoneNumber, tempUser.address);
+                }),
             InfoCard(
                 title: 'Address',
-                content: currentUser.address,
-                isDisabled: !canBeEdit),
+                content: tempUser.address,
+                isDisabled: !canBeEdit,
+                user: tempUser,
+                updateInfo: (newAddress) {
+                  tempUser.updateUserInfo(
+                      tempUser.fullName, tempUser.phoneNumber, newAddress);
+                }),
             Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: canBeEdit
@@ -56,6 +80,10 @@ class _BodyState extends State<Body> {
                             width: getProportionateScreenWidth(150),
                             press: () {
                               setState(() {
+                                tempUser.updateUserInfo(
+                                    currentUser.fullName,
+                                    currentUser.phoneNumber,
+                                    currentUser.address);
                                 canBeEdit = false;
                               });
                             },
@@ -64,6 +92,8 @@ class _BodyState extends State<Body> {
                             text: 'Save',
                             width: getProportionateScreenWidth(150),
                             press: () {
+                              currentUser.updateUserInfo(tempUser.fullName,
+                                  tempUser.phoneNumber, tempUser.address);
                               setState(() {
                                 canBeEdit = false;
                               });
