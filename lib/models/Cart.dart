@@ -62,9 +62,16 @@ class CartModel extends ChangeNotifier {
     _totalQuantity += change;
     notifyListeners();
   }
+
+  void reset() {
+    _totalValue = 0;
+    _totalQuantity = 0;
+    notifyListeners();
+  }
 }
 
 void resetCart() {
+  cart.reset();
   cart = new CartModel();
 }
 
