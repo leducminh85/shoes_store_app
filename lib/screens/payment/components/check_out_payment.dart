@@ -98,11 +98,11 @@ class _CheckoutCardState extends State<CheckoutCard> {
                             trackingNumber: generateRandomNumberString(10),
                             selectedPayment: currentPayment));
                         orders.addToOrders(currentOrder.order);
-
-                        resetCart();
-                        currentOrder.resetOrder();
-                        resetPayment();
-
+                        Future.delayed(Duration(seconds: 1), () {
+                          resetCart();
+                          currentOrder.resetOrder();
+                          resetPayment();
+                        });
                         Fluttertoast.showToast(
                             msg: "Payment successful!",
                             toastLength: Toast.LENGTH_SHORT,
